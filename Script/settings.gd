@@ -7,6 +7,7 @@ func _on_back_pressed() -> void:
 	# Navigate back to the main menu
 	get_tree().change_scene_to_file("res://Scene/Start menu.tscn")
 
+#Saves settings
 func _on_save_pressed() -> void:
 	save_settings()
 
