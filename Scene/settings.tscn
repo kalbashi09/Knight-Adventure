@@ -45,7 +45,7 @@ popup/item_2/id = 2
 [node name="HSlider" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="."]
+[node name="back" type="Button" parent="."]
 clip_contents = true
 layout_direction = 1
 layout_mode = 1
@@ -61,4 +61,22 @@ offset_bottom = 441.816
 theme_override_styles/normal = SubResource("StyleBoxFlat_86b41")
 text = "Back"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="save" type="Button" parent="."]
+clip_contents = true
+layout_direction = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = -0.117
+anchor_right = 0.033
+anchor_bottom = -0.117
+offset_left = 391.984
+offset_top = 410.816
+offset_right = 448.984
+offset_bottom = 441.816
+theme_override_styles/normal = SubResource("StyleBoxFlat_86b41")
+text = "Save"
+
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="save" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="save" to="." method="_on_save_pressed"]
