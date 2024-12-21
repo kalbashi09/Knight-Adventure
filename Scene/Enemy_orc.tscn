@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://bhnawhpxn5fo1"]
+
+[ext_resource type="Script" path="res://Script/Enemy_orc.gd" id="1_v4vdx"]
+[ext_resource type="Texture2D" uid="uid://baywrygv7litc" path="res://Assets/Nightmare-Files/Sprites/Idle/frame1.png" id="2_7ubbt"]
+[ext_resource type="Texture2D" uid="uid://beftrukbiulsk" path="res://Assets/Nightmare-Files/Sprites/Idle/frame2.png" id="3_r38mw"]
+[ext_resource type="Texture2D" uid="uid://cl28j8ht4wcyj" path="res://Assets/Nightmare-Files/Sprites/Idle/frame3.png" id="4_8je53"]
+[ext_resource type="Texture2D" uid="uid://ddbq1a1o0hmhc" path="res://Assets/Nightmare-Files/Sprites/Idle/frame4.png" id="5_tve11"]
+[ext_resource type="Texture2D" uid="uid://ktgggsdx53bt" path="res://Assets/Nightmare-Files/Sprites/Run/frame1.png" id="6_lxokg"]
+[ext_resource type="Texture2D" uid="uid://dxvxn3w33hovm" path="res://Assets/Nightmare-Files/Sprites/Run/frame2.png" id="7_ytcue"]
+[ext_resource type="Texture2D" uid="uid://c1il058ed7gij" path="res://Assets/Nightmare-Files/Sprites/Run/frame3.png" id="8_3d2fq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cmp6g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7ubbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r38mw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8je53")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tve11")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_lxokg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ytcue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3d2fq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lxokg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ytcue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3d2fq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lxokg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ytcue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3d2fq")
+}],
+"loop": true,
+"name": &"run",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_la3l5"]
+size = Vector2(48.5, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5t4hf"]
+size = Vector2(48, 38)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_v4vdx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -8)
+scale = Vector2(0.567708, 0.567708)
+sprite_frames = SubResource("SpriteFrames_cmp6g")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.75, -1)
+shape = SubResource("RectangleShape2D_la3l5")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Enemy"]]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_5t4hf")
