@@ -546,6 +546,10 @@ tile_set = SubResource("TileSet_h6a5c")
 [node name="Player" parent="." instance=ExtResource("2_a3l6r")]
 position = Vector2(61, 84)
 
+[node name="AnimatedSprite2D" parent="Player" index="0"]
+animation = &"attack"
+frame_progress = 0.325807
+
 [node name="Enemy1" parent="." instance=ExtResource("3_k5m7y")]
 position = Vector2(446, 95)
 scale = Vector2(2, 2)

@@ -373,7 +373,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 13.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -483,10 +483,9 @@ script = ExtResource("1_rryu6")
 z_index = 4
 position = Vector2(9, 0)
 sprite_frames = SubResource("SpriteFrames_kp0l3")
-animation = &"attack3"
+animation = &"idle"
 autoplay = "idle"
-frame = 2
-frame_progress = 0.119461
+frame_progress = 0.617443
 
 [node name="AttackArea" type="Area2D" parent="AnimatedSprite2D"]
 collision_layer = 8
