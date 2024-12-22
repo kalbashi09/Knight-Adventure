@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cxypfftbay3uk" path="res://Assets/120x80_PNGSheets/_Roll.png" id="7_yhkxd"]
 [ext_resource type="Script" path="res://Script/area_2d.gd" id="11_kjyxe"]
 [ext_resource type="AudioStream" uid="uid://c0c6le7hhd0up" path="res://Sounds/180830__32cheeseman32__swordswing04.wav" id="12_qfnjl"]
-[ext_resource type="AudioStream" uid="uid://demfbjrctcma1" path="res://Sounds/380471__acebrian__jump.wav" id="13_rovlv"]
+[ext_resource type="AudioStream" uid="uid://c4ybvhhj3yhse" path="res://Sounds/380471__acebrian__jump.wav" id="13_rovlv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3fga"]
 atlas = ExtResource("2_fj0ji")
