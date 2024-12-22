@@ -109,6 +109,8 @@ func _physics_process(delta: float) -> void:
 		if direction != 0:
 			velocity.x = direction * SPEED
 		$AnimatedSprite2D.play("jump")
+		$AudioStreamPlayer_Jump.play()  # Play jump sound
+
 
 	if not is_on_floor() and direction != 0:
 		velocity.x = direction * SPEED

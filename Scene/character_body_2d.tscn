@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://5pigdmjc46gp"]
+[gd_scene load_steps=76 format=3 uid="uid://5pigdmjc46gp"]
 
 [ext_resource type="Script" path="res://Script/character_body_2d.gd" id="1_rryu6"]
 [ext_resource type="Texture2D" uid="uid://da3hnocx6h1t7" path="res://Assets/120x80_PNGSheets/_Idle.png" id="1_x418n"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cxypfftbay3uk" path="res://Assets/120x80_PNGSheets/_Roll.png" id="7_yhkxd"]
 [ext_resource type="Script" path="res://Script/area_2d.gd" id="11_kjyxe"]
 [ext_resource type="AudioStream" uid="uid://c0c6le7hhd0up" path="res://Sounds/180830__32cheeseman32__swordswing04.wav" id="12_qfnjl"]
+[ext_resource type="AudioStream" uid="uid://demfbjrctcma1" path="res://Sounds/380471__acebrian__jump.wav" id="13_rovlv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3fga"]
 atlas = ExtResource("2_fj0ji")
@@ -518,6 +519,9 @@ shape = SubResource("RectangleShape2D_ut5mn")
 
 [node name="AudioStreamPlayer_Attack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_qfnjl")
+
+[node name="AudioStreamPlayer_Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_rovlv")
 
 [connection signal="area_entered" from="AnimatedSprite2D/AttackArea" to="AnimatedSprite2D/AttackArea" method="_on_area_entered"]
 [connection signal="area_exited" from="AnimatedSprite2D/AttackArea" to="AnimatedSprite2D/AttackArea" method="_on_area_exited"]
