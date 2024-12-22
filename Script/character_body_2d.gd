@@ -117,16 +117,19 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_attack") and not is_attacking and not is_attacking2 and not is_attacking3:
 		is_attacking = true
 		$AnimatedSprite2D.play("attack")
+		$AudioStreamPlayer_Attack.play()  # Play attack sound
 		attack_timer = ATTACK_TIME
 
 	if Input.is_action_just_pressed("ui_attack2") and not is_attacking and not is_attacking2 and not is_attacking3:
 		is_attacking2 = true
 		$AnimatedSprite2D.play("attack2")
+		$AudioStreamPlayer_Attack.play()  # Play attack2 sound
 		attack_timer = ATTACK_TIME
 
 	if Input.is_action_just_pressed("ui_attack3") and not is_attacking and not is_attacking2 and not is_attacking3:
 		is_attacking3 = true
 		$AnimatedSprite2D.play("attack3")
+		$AudioStreamPlayer_Attack.play()  # Play attack3 sound
 		attack3_timer = ATTACK3_TIME
 
 	if is_attacking or is_attacking2:
