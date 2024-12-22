@@ -5,7 +5,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86b41"]
 bg_color = Color(0.17, 0.17, 0.17, 1)
 
-[node name="Control" type="Control"]
+[node name="Control2" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,5 +78,5 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_86b41")
 text = "Save"
 
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="save" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="save" to="." method="_on_save_pressed"]
