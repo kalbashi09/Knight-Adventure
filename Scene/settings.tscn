@@ -78,5 +78,5 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_86b41")
 text = "Save"
 
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="save" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="save" to="." method="_on_save_pressed"]

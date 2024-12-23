@@ -20,44 +20,27 @@ var is_rolling = false
 var roll_timer = 0.0
 var max_health = 100
 var current_health = max_health
-var damage = 30 # Amount of damage the enemy deals
+var damage = 30  # Amount of damage the enemy deals
 var step_timer = 0.0  # Timer to control step sound interval
 
 signal player_died
 signal health_changed(current_health)
 
-@export var tile_map = TileMapLayer # Drag the Ground node here in the Inspector
+@export var tile_map : TileMap
 
 @onready var health_bar = $"../CanvasLayer/HealthBar"
 @onready var area2 = $AnimatedSprite2D/AttackArea
 
+# Step sound audio players
+@onready var audio_grass = $AudioStreamPlayer_OnGrass
+@onready var audio_stone = $AudioStreamPlayer_OnStone
+@onready var audio_sand = $AudioStreamPlayer_Sand
+
 func _ready():
 	add_to_group("Player")
 	area2.connect("body_entered", Callable(self, "_on_body_entered"))
-	tile_map = $"../Ground"  # Assign the node reference in _ready
-	
-func get_tile_material():
-	if tile_map is TileMapLayer:
-		# Get the player's position in the world
-		var player_pos = global_position
-		# Convert the world position to the TileMap grid position
-		var tile_pos = tile_map.get_parent().world_to_map(player_pos)
-		# Get the tile ID at the current grid position
-		var tile_id = tile_map.get_parent().get_cellv(tile_map.layer, tile_pos)
 
-		if tile_id != -1:  # Check if a tile exists at this position
-			return tile_map.get_parent().tile_set.tile_get_custom_data(tile_id, "material")
-	return null
-
-func play_step_sound(material: String):
-	match material:
-		"grass":
-			$AudioStreamPlayer_OnGrass.play()  # Adjust the node name/path
-		"stone":
-			$AudioStreamPlayer_OnStone.play()  # Adjust the node name/path
-		"sand":
-			$AudioStreamPlayer_Sand.play()  # Adjust the node name/path
-
+# Function to get the tile material below the player
 
 func take_damage(amount: int) -> void:
 	current_health = clamp(current_health - amount, 0, max_health)
@@ -73,7 +56,6 @@ func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("Enemy"):
 		if body.has_method("take_damage"):
 			body.call("take_damage", damage)
-
 
 func die() -> void:
 	print("Player is dead")
@@ -106,20 +88,17 @@ func _physics_process(delta: float) -> void:
 		if roll_timer <= 0.0 or not is_on_floor():
 			is_rolling = false
 			velocity.x = 0
-
-
-	if is_rolling:
-		move_and_slide()
+		move_and_slide()  # Move while rolling
 		return
 
+	# Normal movement and animation
 	if not is_crouching:
 		if direction != 0 and not is_attacking and not is_attacking2 and not is_attacking3 and is_on_floor():
 			velocity.x = direction * SPEED
-
-		# Play step sound continuously while moving
+			# Play step sound continuously while moving
 			step_timer -= delta  # Decrement the timer
 			if step_timer <= 0.0:  # Check if it's time to play the sound
-				play_step_sound("grass")  # Replace "grass" with your material-detection logic
+				audio_grass.play()  # Play the appropriate step sound
 				step_timer = STEP_INTERVAL  # Reset the timer
 
 			if is_on_floor():
@@ -129,9 +108,9 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			if is_on_floor() and not is_attacking and not is_attacking2 and not is_attacking3:
-					$AnimatedSprite2D.play("idle")
+				$AnimatedSprite2D.play("idle")
 
-		# Reset step_timer when the player stops moving
+			# Reset step_timer when the player stops moving
 			step_timer = 0.0
 
 	if not is_on_floor():
@@ -149,7 +128,6 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * SPEED
 		$AnimatedSprite2D.play("jump")
 		$AudioStreamPlayer_Jump.play()  # Play jump sound
-
 
 	if not is_on_floor() and direction != 0:
 		velocity.x = direction * SPEED

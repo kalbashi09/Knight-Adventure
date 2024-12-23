@@ -478,7 +478,7 @@ radius = 11.0
 height = 38.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ut5mn"]
-size = Vector2(20, 36)
+size = Vector2(20, 38)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_rryu6")
@@ -516,17 +516,19 @@ shape = SubResource("CapsuleShape2D_f4nht")
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(5, 21)
+position = Vector2(5, 22)
 shape = SubResource("RectangleShape2D_ut5mn")
 
 [node name="AudioStreamPlayer_Attack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_g4eaw")
 volume_db = 3.799
+bus = &"SFX"
 
 [node name="AudioStreamPlayer_Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_lj3f1")
 volume_db = -12.001
 pitch_scale = 1.32
+bus = &"SFX"
 
 [node name="AudioStreamPlayer_OnGrass" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_gb6v5")
@@ -537,8 +539,10 @@ pitch_scale = 0.56
 stream = ExtResource("15_sbdp7")
 volume_db = -7.518
 pitch_scale = 0.85
+bus = &"SFX"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [connection signal="area_entered" from="AnimatedSprite2D/AttackArea" to="AnimatedSprite2D/AttackArea" method="_on_area_entered"]
 [connection signal="area_exited" from="AnimatedSprite2D/AttackArea" to="AnimatedSprite2D/AttackArea" method="_on_area_exited"]
