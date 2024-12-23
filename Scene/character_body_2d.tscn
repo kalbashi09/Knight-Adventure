@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://5pigdmjc46gp"]
+[gd_scene load_steps=78 format=3 uid="uid://5pigdmjc46gp"]
 
 [ext_resource type="Script" path="res://Script/character_body_2d.gd" id="1_rryu6"]
 [ext_resource type="Texture2D" uid="uid://da3hnocx6h1t7" path="res://Assets/120x80_PNGSheets/_Idle.png" id="1_x418n"]
@@ -11,8 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://dga3asq76ud2v" path="res://Assets/120x80_PNGSheets/_Run.png" id="4_s27yf"]
 [ext_resource type="Texture2D" uid="uid://cxypfftbay3uk" path="res://Assets/120x80_PNGSheets/_Roll.png" id="7_yhkxd"]
 [ext_resource type="Script" path="res://Script/area_2d.gd" id="11_kjyxe"]
-[ext_resource type="AudioStream" uid="uid://c0c6le7hhd0up" path="res://Sounds/180830__32cheeseman32__swordswing04.wav" id="12_qfnjl"]
-[ext_resource type="AudioStream" uid="uid://c4ybvhhj3yhse" path="res://Sounds/380471__acebrian__jump.wav" id="13_rovlv"]
+[ext_resource type="AudioStream" uid="uid://llty8gun7ecn" path="res://Sounds/PlayerSound/Swordswing.mp3" id="12_g4eaw"]
+[ext_resource type="AudioStream" uid="uid://dcsb8wlqfn7m4" path="res://Sounds/PlayerSound/Jump.mp3" id="13_lj3f1"]
+[ext_resource type="AudioStream" uid="uid://cpp5yxqmqx2yj" path="res://Sounds/Footstep/GrassFS.mp3" id="14_gb6v5"]
+[ext_resource type="AudioStream" uid="uid://2dxwnirdq00t" path="res://Sounds/Footstep/StoneFS.mp3" id="15_sbdp7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3fga"]
 atlas = ExtResource("2_fj0ji")
@@ -518,10 +520,25 @@ position = Vector2(5, 21)
 shape = SubResource("RectangleShape2D_ut5mn")
 
 [node name="AudioStreamPlayer_Attack" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_qfnjl")
+stream = ExtResource("12_g4eaw")
+volume_db = 3.799
 
 [node name="AudioStreamPlayer_Jump" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_rovlv")
+stream = ExtResource("13_lj3f1")
+volume_db = -12.001
+pitch_scale = 1.32
+
+[node name="AudioStreamPlayer_OnGrass" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_gb6v5")
+volume_db = -29.953
+pitch_scale = 0.56
+
+[node name="AudioStreamPlayer_OnStone" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_sbdp7")
+volume_db = -7.518
+pitch_scale = 0.85
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 
 [connection signal="area_entered" from="AnimatedSprite2D/AttackArea" to="AnimatedSprite2D/AttackArea" method="_on_area_entered"]
 [connection signal="area_exited" from="AnimatedSprite2D/AttackArea" to="AnimatedSprite2D/AttackArea" method="_on_area_exited"]
