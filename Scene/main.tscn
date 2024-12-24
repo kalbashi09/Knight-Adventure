@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=4 uid="uid://cji484njw6bkf"]
+[gd_scene load_steps=22 format=4 uid="uid://cji484njw6bkf"]
 
 [ext_resource type="Texture2D" uid="uid://r1q88tws3d0g" path="res://Assets/oak_woods_v1.0/background/background_layer_1.png" id="1_1l1k7"]
+[ext_resource type="Script" path="res://Script/mainscenelvl1.gd" id="1_emlpg"]
 [ext_resource type="Script" path="res://Script/control.gd" id="1_xbgsd"]
 [ext_resource type="Texture2D" uid="uid://dul4q3glwjilm" path="res://Assets/oak_woods_v1.0/oak_woods_tileset.png" id="1_y2p7a"]
 [ext_resource type="Texture2D" uid="uid://dlmi40yqoqssy" path="res://Assets/oak_woods_v1.0/background/background_layer_2.png" id="2_6voom"]
@@ -497,6 +498,7 @@ distance = 19.0
 
 [node name="Main" type="Node2D"]
 position = Vector2(102, 107)
+script = ExtResource("1_emlpg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_priority = 5

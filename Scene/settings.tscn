@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://7hinru4mx8nb"]
+[gd_scene load_steps=4 format=3 uid="uid://7hinru4mx8nb"]
 
 [ext_resource type="Script" path="res://Script/settings.gd" id="1_0db5f"]
+[ext_resource type="Script" path="res://Script/AudioManager.gd" id="2_kgtct"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86b41"]
 bg_color = Color(0.17, 0.17, 0.17, 1)
@@ -77,6 +78,12 @@ offset_bottom = 441.816
 theme_override_styles/normal = SubResource("StyleBoxFlat_86b41")
 text = "Save"
 
+[node name="AudioStreamPlayer_BGmusic" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+script = ExtResource("2_kgtct")
+
+[connection signal="changed" from="VBoxContainer/HSlider" to="." method="_on_h_slider_changed"]
+[connection signal="changed" from="VBoxContainer/HSlider" to="AudioStreamPlayer_BGmusic" method="_on_h_slider_changed"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="save" to="." method="_on_back_pressed"]

@@ -1,34 +1,32 @@
 extends Control
 
-# Path for saving settings
 const SETTINGS_FILE_PATH: String = "user://settings.cfg"
-
-func _on_back_pressed() -> void:
-	# Navigate back to the main menu
-	get_tree().change_scene_to_file("res://Scene/Start menu.tscn")
-
-#Saves settings
-func _on_save_pressed() -> void:
-	save_settings()
+var temp_volume: float = 0.5  # Default temporary volume value
 
 func _ready() -> void:
 	load_settings()
-	
+	$VBoxContainer/HSlider.connect("value_changed", Callable(self, "_on_volume_slider_changed"))
+
+func _on_volume_slider_changed(value: float) -> void:
+	temp_volume = value  # Store the slider value temporarily
+
+func _on_save_pressed() -> void:
+	save_settings()
+	AudioManager.set_volume(temp_volume)  # Apply the saved volume to the background music
+
+func _on_back_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scene/Start menu.tscn")
+
 # Save settings to ConfigFile
 func save_settings() -> void:
 	var config = ConfigFile.new()
-	
-	# Access nodes and save their values
 	var quality = $VBoxContainer/Quality.selected
 	var difficulty = $VBoxContainer/Difficulty.selected
-	var volume = $VBoxContainer/HSlider.value
-	
-	# Write values to ConfigFile
+
 	config.set_value("settings", "quality", quality)
 	config.set_value("settings", "difficulty", difficulty)
-	config.set_value("settings", "volume", volume)
-	
-	# Save to file
+	config.set_value("settings", "volume", temp_volume)
+
 	var error = config.save(SETTINGS_FILE_PATH)
 	if error == OK:
 		print("Settings saved successfully!")
@@ -39,12 +37,14 @@ func save_settings() -> void:
 func load_settings() -> void:
 	var config = ConfigFile.new()
 	var error = config.load(SETTINGS_FILE_PATH)
-	
+
 	if error == OK:
-		# Load values from file and apply them to nodes
-		$VBoxContainer/Quality.selected = config.get_value("settings", "quality", 0)  # Default to index 0
+		$VBoxContainer/Quality.selected = config.get_value("settings", "quality", 0)
 		$VBoxContainer/Difficulty.selected = config.get_value("settings", "difficulty", 0)
-		$VBoxContainer/HSlider.value = config.get_value("settings", "volume", 50)  # Default to 50
+		var volume = config.get_value("settings", "volume", 0.5)  # Default to 0.5
+		$VBoxContainer/HSlider.value = volume
+		temp_volume = volume  # Set the temporary volume to the loaded value
+		AudioManager.set_volume(volume)  # Apply the loaded volume immediately
 		print("Settings loaded successfully!")
 	else:
 		print("Failed to load settings: ", error)
