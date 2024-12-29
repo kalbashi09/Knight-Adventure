@@ -521,7 +521,7 @@ shape = SubResource("RectangleShape2D_ut5mn")
 
 [node name="AudioStreamPlayer_Attack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_g4eaw")
-volume_db = -14.996
+volume_db = -4.972
 pitch_scale = 1.42
 bus = &"SFX"
 
@@ -535,6 +535,7 @@ bus = &"SFX"
 stream = ExtResource("14_gb6v5")
 volume_db = -45.494
 pitch_scale = 0.71
+bus = &"SFX"
 
 [node name="AudioStreamPlayer_OnStone" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_sbdp7")

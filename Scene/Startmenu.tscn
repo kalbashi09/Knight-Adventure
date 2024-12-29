@@ -1,19 +1,19 @@
 [gd_scene load_steps=14 format=3 uid="uid://df62o75ltgs6i"]
 
-[ext_resource type="Texture2D" uid="uid://r1q88tws3d0g" path="res://Assets/oak_woods_v1.0/background/background_layer_1.png" id="1_8bjf7"]
-[ext_resource type="Script" path="res://Script/start_menu.gd" id="1_ui058"]
-[ext_resource type="Texture2D" uid="uid://dlmi40yqoqssy" path="res://Assets/oak_woods_v1.0/background/background_layer_2.png" id="2_2s3ub"]
-[ext_resource type="Texture2D" uid="uid://e00poy4kebgw" path="res://Assets/oak_woods_v1.0/background/background_layer_3.png" id="3_kxlaj"]
-[ext_resource type="FontFile" uid="uid://dfybesdhat8ud" path="res://Assets/Fonts/vinque rg.otf" id="4_1fhnr"]
+[ext_resource type="Script" path="res://Script/start_menu.gd" id="1_86svb"]
+[ext_resource type="Texture2D" uid="uid://r1q88tws3d0g" path="res://Assets/oak_woods_v1.0/background/background_layer_1.png" id="2_gt1ix"]
+[ext_resource type="Texture2D" uid="uid://dlmi40yqoqssy" path="res://Assets/oak_woods_v1.0/background/background_layer_2.png" id="3_i3joi"]
+[ext_resource type="Texture2D" uid="uid://e00poy4kebgw" path="res://Assets/oak_woods_v1.0/background/background_layer_3.png" id="4_sk3lx"]
+[ext_resource type="FontFile" uid="uid://dfybesdhat8ud" path="res://Assets/Fonts/vinque rg.otf" id="5_n7qva"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yc18b"]
-texture = ExtResource("1_8bjf7")
+texture = ExtResource("2_gt1ix")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jhqls"]
-texture = ExtResource("2_2s3ub")
+texture = ExtResource("3_i3joi")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fybnb"]
-texture = ExtResource("3_kxlaj")
+texture = ExtResource("4_sk3lx")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3neml"]
 
@@ -53,7 +53,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ui058")
+script = ExtResource("1_86svb")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -154,7 +154,7 @@ theme_override_constants/shadow_offset_x = 6
 theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 0
 theme_override_constants/shadow_outline_size = 8
-theme_override_fonts/font = ExtResource("4_1fhnr")
+theme_override_fonts/font = ExtResource("5_n7qva")
 theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxTexture_2cwvw")
 text = "Knight Adventure"

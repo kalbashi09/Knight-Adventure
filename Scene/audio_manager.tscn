@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://0ne7xi6srtsc"]
+
+[ext_resource type="Script" path="res://Script/AudioManager.gd" id="1_s06yr"]
+
+[node name="AudioManager" type="AudioStreamPlayer"]
+volume_db = -33.831
+bus = &"Music"
+script = ExtResource("1_s06yr")

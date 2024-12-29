@@ -48,4 +48,4 @@ func _on_player_killed() -> void:
 	death_label.text = "YOU DIED"  # Or customize the text for the killzone
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scene/Start menu.tscn")
+	get_tree().change_scene_to_file("res://Scene/Startmenu.tscn")

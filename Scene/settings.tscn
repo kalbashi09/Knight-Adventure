@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://7hinru4mx8nb"]
+[gd_scene load_steps=3 format=3 uid="uid://7hinru4mx8nb"]
 
 [ext_resource type="Script" path="res://Script/settings.gd" id="1_0db5f"]
-[ext_resource type="Script" path="res://Script/AudioManager.gd" id="2_kgtct"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86b41"]
 bg_color = Color(0.17, 0.17, 0.17, 1)
@@ -15,12 +14,53 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0db5f")
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 72.0
+offset_right = 467.0
+offset_bottom = 316.0
+theme_override_constants/separation = 50
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Quality
+"
+horizontal_alignment = 2
+vertical_alignment = 3
+uppercase = true
+
+[node name="Label2" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Difficulty
+"
+horizontal_alignment = 2
+vertical_alignment = 3
+uppercase = true
+
+[node name="Label3" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Music
+"
+horizontal_alignment = 2
+vertical_alignment = 3
+uppercase = true
+
+[node name="Label4" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "SFX
+"
+horizontal_alignment = 2
+vertical_alignment = 3
+uppercase = true
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 394.0
-offset_top = 71.0
-offset_right = 743.0
-offset_bottom = 236.0
+offset_left = 478.0
+offset_top = 66.0
+offset_right = 827.0
+offset_bottom = 310.0
 theme_override_constants/separation = 50
 
 [node name="Quality" type="OptionButton" parent="VBoxContainer"]
@@ -43,7 +83,10 @@ popup/item_1/id = 1
 popup/item_2/text = "Hard"
 popup/item_2/id = 2
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer"]
+[node name="Music_slider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Sfx_slider" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
 
 [node name="back" type="Button" parent="."]
@@ -78,12 +121,8 @@ offset_bottom = 441.816
 theme_override_styles/normal = SubResource("StyleBoxFlat_86b41")
 text = "Save"
 
-[node name="AudioStreamPlayer_BGmusic" type="AudioStreamPlayer" parent="."]
-bus = &"Music"
-script = ExtResource("2_kgtct")
-
-[connection signal="changed" from="VBoxContainer/HSlider" to="." method="_on_h_slider_changed"]
-[connection signal="changed" from="VBoxContainer/HSlider" to="AudioStreamPlayer_BGmusic" method="_on_h_slider_changed"]
+[connection signal="changed" from="VBoxContainer/Music_slider" to="." method="_on_h_slider_changed"]
+[connection signal="changed" from="VBoxContainer/Sfx_slider" to="." method="_on_h_slider_changed"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="save" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="save" to="." method="_on_save_pressed"]
